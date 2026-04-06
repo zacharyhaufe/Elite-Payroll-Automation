@@ -2,21 +2,21 @@
   {
     "id": "E1",
     "name": "Dave",
-    "commission_rate": 0.19
+    "commission_rate": 0.17
   },
   {
     "id": "E2",
     "name": "Austin",
-    "commission_rate": 0.18
+    "commission_rate": 0.16
   },
   {
     "id": "E3",
     "name": "Ethan",
-    "commission_rate": 0.16
+    "commission_rate": 0.15
   },
   {
     "id": "E4",
     "name": "Kaiden",
-    "commission_rate": 0.12
+    "commission_rate": 0.20
   }
 ]
