@@ -11,6 +11,11 @@ JOBS_FILE = Path("jobs.csv")
 
 SOLO_COMMISSION_RATE = 0.25
 
+# Per-employee solo rate overrides (name lowercase -> rate)
+SOLO_COMMISSION_RATE_OVERRIDES = {
+    "kaiden": 0.30,
+}
+
 
 def load_employees(path: Path) -> Dict[str, Dict]:
     if not path.exists():
@@ -104,7 +109,10 @@ def process_jobs(employees: Dict[str, Dict], path: Path) -> List[Dict]:
                     print(f"Warning: employee '{emp_token}' not found for job {job_id}, skipping")
                     continue
 
-                rate = SOLO_COMMISSION_RATE if solo else emp["commission_rate"]
+                if solo:
+                    rate = SOLO_COMMISSION_RATE_OVERRIDES.get(emp["name"].lower(), SOLO_COMMISSION_RATE)
+                else:
+                    rate = emp["commission_rate"]
                 earned = subtotal * rate
 
                 output_rows.append({
